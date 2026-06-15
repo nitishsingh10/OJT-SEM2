@@ -1,0 +1,407 @@
+:root {
+  /* Backgrounds */
+  --bg-primary: #0D0D14; /* Main page background */
+  --bg-secondary: #13131E; /* Section backgrounds */
+  --bg-card: #1A1A2E; /* Card / panel surface */
+  --bg-card-hover: #1E1E35; /* Card hover state */
+  --bg-input: #0F0F1A; /* Form input background */
+  
+  /* Accents */
+  --accent: #6C63FF; /* Primary CTA, links */
+  --accent-hover: #5A52E0; /* Primary hover */
+  --accent-gold: #F0C05A; /* Secondary accent */
+  
+  /* Text */
+  --text-primary: #FFFFFF; /* Headings, key text */
+  --text-secondary: #A0A0B8; /* Body copy */
+  --text-muted: #6B6B80; /* Meta, timestamps */
+  
+  /* Semantic */
+  --success: #10B981; /* Income, correct, OK */
+  --error: #EF4444; /* Expense, wrong, fail */
+  --warning: #F59E0B; /* Caution states */
+  --progress: #3B82F6; /* In Progress state */
+  
+  /* Borders & Shadows */
+  --border: rgba(255,255,255,0.08);
+  --border-accent: rgba(108,99,255,0.40);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.40);
+  --shadow-glow: 0 0 30px rgba(108,99,255,0.15);
+  
+  /* Sizing */
+  --radius-card: 12px;
+  --radius-btn: 8px;
+  --radius-input: 8px;
+  --radius-badge: 20px;
+  
+  /* Typography */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Transitions */
+  --transition: 0.20s ease;
+  --transition-slow: 0.35s ease;
+}
+
+/* ■■ Reset & Base ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { 
+  background: var(--bg-primary); 
+  color: var(--text-primary);
+  font-family: var(--font-body); 
+  font-size: 16px;
+  line-height: 1.6; 
+  -webkit-font-smoothing: antialiased; 
+  overflow: hidden; 
+  position: relative;
+}
+
+/* Background Mesh for Premium Look */
+.bg-mesh {
+  position: absolute;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: 
+    radial-gradient(circle at 15% 50%, rgba(108, 99, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 85% 30%, rgba(240, 192, 90, 0.05) 0%, transparent 50%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+h1, h2, h3, h4, h5, h6 { 
+  font-family: var(--font-heading); 
+  line-height: 1.2; 
+  letter-spacing: -0.02em;
+}
+
+/* ■■ Buttons ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+.btn-primary { 
+  background: var(--accent); 
+  color: #fff; 
+  border: none;
+  padding: 10px 24px; 
+  border-radius: var(--radius-btn);
+  font-weight: 600; 
+  font-size: 14px; 
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition); 
+}
+.btn-primary:hover { 
+  background: var(--accent-hover); 
+  transform: translateY(-1px);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline { 
+  background: transparent; 
+  color: var(--accent);
+  border: 1px solid var(--border-accent); 
+  padding: 8px 20px;
+  border-radius: var(--radius-btn); 
+  font-weight: 600; 
+  font-size: 14px;
+  cursor: pointer; 
+  transition: all var(--transition); 
+}
+.btn-outline:hover { 
+  background: rgba(108, 99, 255, 0.1); 
+  border-color: var(--accent);
+}
+
+/* ■■ Input ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+.input { 
+  background: var(--bg-input); 
+  border: 1px solid var(--border);
+  border-radius: var(--radius-input); 
+  color: var(--text-primary); 
+  font-size: 14px;
+  padding: 12px 14px; 
+  width: 100%; 
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition); 
+  font-family: var(--font-body);
+  resize: none;
+}
+.input:focus { 
+  border-color: var(--accent); 
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+.input::placeholder { color: var(--text-muted); }
+
+/* ■■ Badges ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+.badge { 
+  background: rgba(255, 255, 255, 0.05); 
+  color: var(--text-secondary);
+  border: 1px solid var(--border); 
+  border-radius: var(--radius-badge);
+  padding: 4px 10px; 
+  font-size: 12px; 
+  font-weight: 600; 
+  display: inline-block; 
+}
+
+/* ■■ Kanban Specific UI ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+.board-header {
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: rgba(13, 13, 20, 0.6);
+  backdrop-filter: blur(12px);
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(108, 99, 255, 0.4);
+}
+
+.board-container {
+  display: flex;
+  gap: 24px;
+  padding: 24px 32px;
+  height: calc(100vh - 80px);
+  overflow-x: auto;
+  align-items: flex-start;
+}
+
+/* Custom Scrollbar for Board */
+.board-container::-webkit-scrollbar {
+  height: 8px;
+}
+.board-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.board-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.board-container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Kanban Columns */
+.column {
+  min-width: 320px;
+  max-width: 320px;
+  flex-shrink: 0;
+  background: rgba(19, 19, 30, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+}
+
+.col-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.col-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.todo-dot { background: var(--text-muted); }
+.progress-dot { background: var(--progress); box-shadow: 0 0 8px rgba(59, 130, 246, 0.5); }
+.done-dot { background: var(--success); box-shadow: 0 0 8px rgba(16, 185, 129, 0.5); }
+
+.cards-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  min-height: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 4px;
+  padding-bottom: 8px;
+  transition: background var(--transition);
+  border-radius: 8px;
+}
+
+/* Scrollbar styling for cards list */
+.cards-list::-webkit-scrollbar {
+  width: 4px;
+}
+.cards-list::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+/* Kanban Cards */
+.kanban-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 14px;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s, border-color 0.2s;
+  animation: fadeUp 0.3s ease forwards;
+  border-left-width: 4px;
+}
+.kanban-card.state-todo {
+  border-left-color: var(--text-muted);
+}
+.kanban-card.state-inProgress {
+  border-left-color: var(--progress);
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
+}
+.kanban-card.state-done {
+  border-left-color: var(--success);
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.05) 0%, transparent 100%);
+}
+.kanban-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.card-text {
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  word-break: break-word;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.05);
+}
+
+.card-date {
+  color: var(--text-muted);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background var(--transition), color var(--transition);
+}
+.action-btn.move {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+  background: rgba(108, 99, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 6px;
+}
+.action-btn.move:hover {
+  background: rgba(108, 99, 255, 0.2);
+  transform: scale(1.05);
+}
+.action-btn.edit {
+  color: var(--text-secondary);
+}
+.action-btn.edit:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+.action-btn.delete {
+  color: var(--text-secondary);
+}
+.action-btn.delete:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--error);
+}
+
+/* Add Card UI */
+.add-card-ui {
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.add-card-btn {
+  width: 100%;
+  padding: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-secondary);
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  font-weight: 500;
+  font-family: var(--font-body);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.add-card-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(108, 99, 255, 0.05);
+}
+
+.add-input-wrap {
+  animation: fadeUp 0.2s ease forwards;
+}
+.add-input-wrap.hidden {
+  display: none;
+}
+
+.add-card-input {
+  margin-bottom: 8px;
+}
+
+.hint-text {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 0 4px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

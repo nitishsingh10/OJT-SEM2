@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Task Board</title>
+  <meta name="description" content="A premium Kanban board for tracking tasks with drag and drop functionality.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+  <header class="board-header">
+    <div class="logo-area">
+      <div class="logo-icon"></div>
+      <h2>Kanban Board</h2>
+    </div>
+    <button class="btn-outline" id="clear-board-btn">Clear Board</button>
+  </header>
+  
+  <main class="board-container">
+    <!-- To Do Column -->
+    <div class="column" data-column="todo">
+      <div class="col-header">
+        <h3 class="col-title"><span class="status-dot todo-dot"></span>To Do</h3>
+        <span class="badge col-badge" data-column="todo">0</span>
+      </div>
+      <div class="cards-list" data-column="todo"></div>
+      <div class="add-card-ui">
+        <button class="add-card-btn" data-column="todo">+ Add a card</button>
+        <div class="add-input-wrap hidden">
+          <textarea class="input add-card-input" rows="2" placeholder="What needs to be done?"></textarea>
+          <div class="hint-text">
+            <span>Press <strong>Enter</strong> to save</span>
+            <span><strong>Esc</strong> to cancel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- In Progress Column -->
+    <div class="column" data-column="inProgress">
+      <div class="col-header">
+        <h3 class="col-title"><span class="status-dot progress-dot"></span>In Progress</h3>
+        <span class="badge col-badge" data-column="inProgress">0</span>
+      </div>
+      <div class="cards-list" data-column="inProgress"></div>
+      <div class="add-card-ui">
+        <button class="add-card-btn" data-column="inProgress">+ Add a card</button>
+        <div class="add-input-wrap hidden">
+          <textarea class="input add-card-input" rows="2" placeholder="What are you working on?"></textarea>
+          <div class="hint-text">
+            <span>Press <strong>Enter</strong> to save</span>
+            <span><strong>Esc</strong> to cancel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Done Column -->
+    <div class="column" data-column="done">
+      <div class="col-header">
+        <h3 class="col-title"><span class="status-dot done-dot"></span>Done</h3>
+        <span class="badge col-badge" data-column="done">0</span>
+      </div>
+      <div class="cards-list" data-column="done"></div>
+      <div class="add-card-ui">
+        <button class="add-card-btn" data-column="done">+ Add a card</button>
+        <div class="add-input-wrap hidden">
+          <textarea class="input add-card-input" rows="2" placeholder="What have you completed?"></textarea>
+          <div class="hint-text">
+            <span>Press <strong>Enter</strong> to save</span>
+            <span><strong>Esc</strong> to cancel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="kanban-state.js"></script>
+  <script src="kanban-render.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
